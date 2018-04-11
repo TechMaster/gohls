@@ -12,6 +12,7 @@ import (
 type assetHandler struct{}
 
 func (s *assetHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	fmt.Printf("Asset Handler %s\n", r.URL.Path)
 	data, err := Asset(r.URL.Path)
 	if err != nil {
 		fmt.Fprintf(w, "Not gfound %v", r.URL.Path)

@@ -29,6 +29,7 @@ func NewPlaylistHandler(root string) *PlaylistHandler {
 }
 
 func (s *PlaylistHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	fmt.Printf("Playlist Request: %s\n", r.URL.Path)
 	log.Debugf("Playlist request: %v", r.URL.Path)
 	matches := playlistRegexp.FindStringSubmatch(r.URL.Path)
 	if matches == nil {

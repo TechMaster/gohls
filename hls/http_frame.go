@@ -14,6 +14,7 @@ type FrameHandler struct {
 }
 
 func NewFrameHandler(root string) *FrameHandler {
+
 	return &FrameHandler{root, NewHttpCommandHandler(2, "frames")}
 }
 

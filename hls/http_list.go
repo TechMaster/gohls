@@ -31,6 +31,7 @@ type ListHandler struct {
 }
 
 func NewListHandler(path string) *ListHandler {
+	fmt.Printf("NewListHandler %s\n", path)
 	return &ListHandler{path}
 }
 

@@ -5,7 +5,7 @@ import (
 	"flag"
 	"fmt"
 	"github.com/google/subcommands"
-	"github.com/shimberger/gohls/hls"
+	"github.com/TechMaster/gohls/hls"
 	"net/http"
 )
 
@@ -34,8 +34,8 @@ func (p *serveCmd) Execute(_ context.Context, f *flag.FlagSet, _ ...interface{})
 
 	// Setup HTTP server
 	http.Handle("/", http.RedirectHandler("/ui/", 302))
-	http.Handle("/ui/assets/", http.StripPrefix("/ui/assets/", &assetHandler{}))
-	http.Handle("/ui/", NewDebugHandlerWrapper(http.StripPrefix("/ui/", NewSingleAssetHandler("index.html"))))
+	http.Handle("/ui/assets/", http.StripPrefix("/ui/assets", &assetHandler{}))
+	http.Handle("/ui/", NewDebugHandlerWrapper(http.StripPrefix("/ui/", NewSingleAssetHandler("/index.html"))))
 	http.Handle("/list/", NewDebugHandlerWrapper(http.StripPrefix("/list/", hls.NewListHandler(videoDir))))
 	http.Handle("/frame/", NewDebugHandlerWrapper(http.StripPrefix("/frame/", hls.NewFrameHandler(videoDir))))
 	http.Handle("/playlist/", NewDebugHandlerWrapper(http.StripPrefix("/playlist/", hls.NewPlaylistHandler(videoDir))))

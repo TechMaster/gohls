@@ -24,6 +24,7 @@ func (s *singleAssetHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "Not found %v", s.path)
 		// Asset was not found.
 	}
+	fmt.Printf("ui request %s\n", s.path)
 	w.Header().Set("Content-Type", mime.TypeByExtension(path.Ext(s.path)))
 	io.Copy(w, bytes.NewBuffer(data))
 }

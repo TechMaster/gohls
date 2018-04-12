@@ -14,6 +14,7 @@ type singleAssetHandler struct {
 }
 
 func NewSingleAssetHandler(path string) *singleAssetHandler {
+	fmt.Printf("NewSingleAssetHandler %s\n", path)
 	return &singleAssetHandler{path}
 }
 
